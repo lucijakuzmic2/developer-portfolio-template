@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS files (Windows)
+Thumbs.db
+
+# IDE configs (VS Code)
+.vscode/
+
+# Environment variables
+.env
