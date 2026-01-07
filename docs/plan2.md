@@ -1,4 +1,4 @@
-# Plan 3 — Create .gitignore appropriate for project stack
+# Plan 2 - Create .gitignore appropriate for project stack
 
 ## Goal
 
