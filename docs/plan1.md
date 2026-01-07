@@ -1,42 +1,36 @@
-# Plan 1 — Add and complete .gitignore
+# Plan 1 — Repository Setup: Initialize with README template
 
 ## Goal
 
-Add a `.gitignore` file to the project so Git excludes unnecessary/generated/local-only files (e.g., node_modules/, OS files, IDE configs).
+Initialize the repository with a complete README template suitable for a portfolio project.
 
 ## Why
 
-- Keeps the repository clean and professional
-- Prevents committing large dependency folders like `node_modules/`
-- Avoids OS/editor junk files (Windows + VS Code)
+- Provides project documentation for markers/users
+- Ensures required sections exist from the start
+- Supports transparency requirements (AI usage disclosure)
 
 ## Scope
 
-Create or update the following files:
+Files to create:
 
-- `./.gitignore` (new or updated)
+- README.md
+- docs/plan1.md (this document)
 
-## Items to ignore
+## README must include
 
-1. Node dependencies
-   - `node_modules/`
-2. Logs created by package managers / tooling
-   - `npm-debug.log*`, `yarn-debug.log*`, `pnpm-debug.log*`
-3. Windows OS junk files
-   - `Thumbs.db`
-4. VS Code workspace settings (IDE configs)
-   - `.vscode/`
-5. Environment variable files (if used)
-   - `.env`
+- Live deployment link at the very top (placeholder until deployed)
+- Project description and purpose
+- Tech stack
+- Setup instructions (local)
+- Customization guide
+- Screenshots / demo GIF section (placeholder)
+- Credits and acknowledgments
+- AI Agent Usage Policy section (two-phase workflow + when/how AI used)
+- License note (MIT) if required later
 
-## Acceptance criteria
+## Acceptance Criteria
 
-- A `.gitignore` file exists at project root
-- The patterns above are included
-- Running `git status` does not show ignored files as untracked (when they exist)
-
-## Risks / Notes
-
-- If any ignored files were committed before, `.gitignore` won’t remove them automatically.
-  In that case, remove them from Git tracking with:
-  `git rm -r --cached <path>`
+- README.md exists in project root and contains all required headings/sections
+- Live link is at the top (placeholder allowed until deployment)
+- AI usage policy is included

@@ -9,7 +9,7 @@ pnpm-debug.log*
 # OS files (Windows)
 Thumbs.db
 
-# IDE configs (VS Code)
+# IDE settings
 .vscode/
 
 # Environment variables
