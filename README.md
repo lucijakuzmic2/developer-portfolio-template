@@ -15,6 +15,11 @@ Its purpose is to demonstrate responsive layout, accessible UI patterns, and mod
 - Git + GitHub
 - Visual Studio Code
 
+### Build Tooling
+
+This project does not use a build tool such as Vite.  
+It is implemented as a static HTML/CSS project, which is sufficient for the scope of the assignment and compatible with GitHub Pages.
+
 ## Setup Instructions (Local Development)
 
 1. Clone the repository:
