@@ -43,22 +43,25 @@
 .hero-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
-  gap: clamp(2.5rem, 6vw, 5rem);
+  gap: clamp(3rem, 8vw, 6rem);
   min-height: min(86vh, 820px);
 }
 .hero-left {
   align-self: start;
-  margin-top: 2rem;
+  margin-top: clamp(2rem, 6vh, 4rem);
 }
 
 .hero-right {
-  align-self: end; /* puts the intro down near the bottom-right */
+  align-self: end;
   justify-self: end;
-  max-width: 40ch;
+  width: min(620px, 48vw);
+  text-align: left;
+  padding-bottom: clamp(2rem, 8vh, 6rem);
 }
-.hero-subheading {
+.hero-intro {
   margin: 0 0 var(--space-5);
 }
+
 .hero-contact {
   margin-top: var(--space-6);
   font-size: 0.95rem;
@@ -83,10 +86,13 @@
   .hero-right {
     align-self: start;
     justify-self: start;
-    max-width: 65ch;
   }
 
-  /* ✅ These were wrongly outside */
+  .hero-right {
+    width: 100%;
+    max-width: 42ch;
+  }
+
   .header-inner {
     grid-template-columns: 1fr;
     gap: var(--space-4);
@@ -96,4 +102,9 @@
   .site-meta {
     text-align: left;
   }
+}
+
+/* Hero gets a wider container than the rest of the site */
+.hero-container {
+  width: min(1400px, calc(100% - (var(--space-6) * 2)));
 }

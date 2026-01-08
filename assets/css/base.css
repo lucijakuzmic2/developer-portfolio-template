@@ -19,6 +19,7 @@
 
   --fs-0: 1rem; /* base body */
   --fs-ui: 0.9rem;
+  --fs-intro: clamp(1.35rem, 1.4vw + 1rem, 2rem);
   --fs-1: clamp(1rem, 0.5vw + 0.95rem, 1.25rem); /* UI / subheading */
   --fs-2: clamp(1.5rem, 1.6vw + 1.1rem, 2.25rem); /* section headings */
   --fs-3: clamp(3.5rem, 10vw + 1rem, 10rem); /* hero/display headline */
@@ -105,16 +106,39 @@ a {
   color: inherit;
   text-underline-offset: 0.2em;
 }
-
-main p {
+main p:not(.hero-intro):not(.hero-contact) {
   font-weight: 400;
   font-size: var(--fs-1);
   line-height: 1.35;
   color: var(--color-muted);
   max-width: 70ch;
 }
-p {
-  font: inherit;
+.hero-right .hero-intro {
+  font-size: var(--fs-intro);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin: 0;
+  padding-left: 2rem;
+  margin-left: -2rem;
+  max-width: none;
+}
+.hero-intro::first-line {
+  font-weight: inherit;
+}
+
+.hero-intro {
+  /* pull the whole block left a bit */
+  margin-left: -1.8rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-intro);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  padding-left: -3rem;
+  text-indent: 3rem;
 }
 
 h1,
@@ -163,7 +187,7 @@ h2 {
   gap: 0.2em;
 }
 
-.hero-title line {
+.hero-title span {
   display: block;
 }
 
@@ -171,4 +195,18 @@ h2 {
   color: var(--color-text);
   font-weight: 500;
   max-width: 40ch;
+}
+.hero-intro {
+  font-family: var(--font-body);
+  font-size: clamp(2.2rem, 2.4vw + 1rem, 3.3rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin: 0;
+  max-width: none;
+}
+
+.hero-right .btn-primary {
+  margin-top: var(--space-2);
 }
