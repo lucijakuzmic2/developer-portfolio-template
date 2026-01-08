@@ -19,8 +19,15 @@
 }
 
 .scroll-indicator {
-  display: inline-block;
-  margin-top: var(--space-7);
+  position: absolute;
+  left: 50%;
+  bottom: 0.4rem; /* adjust vertically if needed */
+  transform: translateX(-50%);
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--color-muted);
 }
 .hero-right {
@@ -42,4 +49,9 @@
   text-align: justify;
   text-indent: 2.2rem;
   overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .scroll-indicator {
+    bottom: 0.5rem;
+  }
 }
