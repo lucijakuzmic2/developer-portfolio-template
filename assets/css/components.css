@@ -30,35 +30,38 @@
   font-weight: 700;
   letter-spacing: -0.04em;
   text-decoration: none;
-  font-size: var(--fs-ui);
+  font-size: 1.85rem;
   line-height: 1;
-  justify-self: start;
 }
 
+.brand-mark {
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-left: 0.1em;
+  opacity: 0.95;
+}
 /* Nav block */
 .site-nav {
-  text-align: center;
+  text-align: left;
+  justify-self: center;
+  transform: translateX(1.5rem);
 }
 
 /* Label */
 .nav-label {
   font-size: var(--fs-ui);
   font-weight: 600;
-  margin: 0 0 0.15rem;
-  line-height: 1.1;
-  color: var(--color-text);
+  line-height: 1.15;
+  margin: 0;
 }
 
 /* Links line */
 .nav-list {
   display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: baseline;
   gap: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  line-height: 1.1;
+  margin-top: 0.35em;
+  line-height: 1.15;
 }
 
 .nav-list li:not(:last-child)::after {
@@ -69,8 +72,8 @@
 .nav-list a {
   font-size: var(--fs-ui);
   font-weight: 400;
-  text-decoration: none; /* IMPORTANT: remove underline */
-  color: var(--color-muted);
+  color: rgba(245, 242, 238, 0.6);
+  text-decoration: none;
 }
 
 .nav-list a:hover {
@@ -81,27 +84,21 @@
 
 /* Meta (top-right) */
 .site-meta {
-  justify-self: end;
   text-align: right;
   font-size: var(--fs-ui);
-  line-height: 1.15; /* tighter like reference */
 }
 
+/* behaves like nav-label */
 .site-location {
-  margin: 0;
   font-weight: 600;
-  color: var(--color-text);
+  line-height: 1.15;
+  margin: 0;
 }
 
+/* behaves like nav-list line */
 .site-role {
-  margin: 0;
   font-weight: 400;
-  color: var(--color-muted);
-}
-.nav-label,
-.nav-list a,
-.site-location,
-.site-role,
-.hero-contact a {
-  font-size: var(--fs-ui);
+  line-height: 1.15;
+  margin-top: 0.35em; /* ✅ SAME VALUE AS NAV */
+  color: rgba(245, 242, 238, 0.6);
 }

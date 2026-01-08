@@ -18,7 +18,7 @@
     "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
 
   --fs-0: 1rem; /* base body */
-  --fs-ui: 0.8125rem;
+  --fs-ui: 0.9rem;
   --fs-1: clamp(1rem, 0.5vw + 0.95rem, 1.25rem); /* UI / subheading */
   --fs-2: clamp(1.5rem, 1.6vw + 1.1rem, 2.25rem); /* section headings */
   --fs-3: clamp(3.5rem, 10vw + 1rem, 10rem); /* hero/display headline */
