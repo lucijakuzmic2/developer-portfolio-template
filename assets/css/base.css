@@ -154,3 +154,16 @@ h2 {
     transition: none !important;
   }
 }
+.hero-title {
+  text-transform: uppercase;
+  letter-spacing: -0.06em;
+  font-weight: 800;
+  margin: 0;
+}
+
+.hero-title br {
+  line-height: 0;
+}
+.hero-title {
+  line-height: 0.85;
+}
