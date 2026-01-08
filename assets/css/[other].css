@@ -23,3 +23,23 @@
   margin-top: var(--space-7);
   color: var(--color-muted);
 }
+.hero-right {
+  justify-self: end; /* stays on the right side */
+  width: min(46vw, 680px); /* NOT 100% (this is the key) */
+  max-width: 680px;
+  min-width: 0;
+  padding-left: 0; /* remove the fake “move” */
+  margin-right: clamp(2rem, 6vw, 7rem); /* pushes the whole block left */
+}
+
+/* Make the intro wrap nicely (3–4 lines instead of 6) */
+.hero-intro {
+  max-width: 40ch; /* controls line count */
+  font-size: clamp(2.2rem, 2.4vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  text-align: justify;
+  text-indent: 2.2rem;
+  overflow-wrap: anywhere;
+}

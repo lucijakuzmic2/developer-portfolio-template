@@ -39,10 +39,9 @@
   padding-top: clamp(6rem, 12vw, 9rem);
   padding-bottom: clamp(4rem, 10vw, 7rem);
 }
-
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   gap: clamp(3rem, 8vw, 6rem);
   min-height: min(86vh, 820px);
 }
@@ -50,13 +49,13 @@
   align-self: start;
   margin-top: clamp(2rem, 6vh, 4rem);
 }
-
 .hero-right {
   align-self: end;
-  justify-self: end;
-  width: min(620px, 48vw);
-  text-align: left;
-  padding-bottom: clamp(2rem, 8vh, 6rem);
+  justify-self: end; /* keep it on the right side of its column */
+  width: 100%;
+  max-width: 760px; /* your “Framer-ish” text width */
+  padding-left: clamp(2rem, 6vw, 6rem); /* IMPORTANT: remove the push */
+  min-width: 0; /* allows wrapping instead of overflow */
 }
 .hero-intro {
   margin: 0 0 var(--space-5);
@@ -82,15 +81,18 @@
     min-height: auto;
   }
 
-  .hero-left,
-  .hero-right {
+  .hero-left {
     align-self: start;
     justify-self: start;
   }
 
   .hero-right {
+    align-self: start;
+    justify-self: start;
     width: 100%;
     max-width: 42ch;
+    margin: 0;
+    padding-bottom: 0;
   }
 
   .header-inner {
