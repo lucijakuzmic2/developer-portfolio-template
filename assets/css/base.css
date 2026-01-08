@@ -11,16 +11,19 @@
   --color-focus: #ffffff;
 
   /* Typography */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
 
-  --fs-0: 1rem; /* base */
-  --fs-1: clamp(1.125rem, 1.1vw + 0.95rem, 1.35rem);
-  --fs-2: clamp(1.35rem, 1.8vw + 1.05rem, 1.75rem);
-  --fs-3: clamp(2rem, 3.6vw + 1.2rem, 3.25rem); /* hero headline */
+  --font-heading: "Space Grotesk", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
 
-  --lh-body: 1.6;
-  --lh-tight: 1.1;
+  --fs-0: 1rem; /* base body */
+  --fs-1: clamp(1.125rem, 0.6vw + 1rem, 1.35rem); /* UI / subheading */
+  --fs-2: clamp(1.5rem, 1.6vw + 1.1rem, 2.25rem); /* section headings */
+  --fs-3: clamp(3.25rem, 8vw + 1rem, 7.5rem); /* hero/display headline */
+
+  --lh-body: 1.65;
+  --lh-tight: 0.9;
 
   /* Spacing scale */
   --space-1: 0.25rem;
@@ -50,13 +53,30 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-body,
 h1,
 h2,
-h3,
-p,
-ul {
-  margin: 0;
+h3 {
+  font-family: var(--font-heading);
+}
+
+h1,
+h2 {
+  letter-spacing: -0.06em; /* tighter, like the reference */
+}
+
+h1 {
+  font-weight: 800; /* ExtraBold */
+  font-size: var(--fs-3);
+  line-height: var(--lh-tight);
+  text-transform: uppercase; /* optional, but matches the vibe */
+}
+
+h2 {
+  font-weight: 700;
+  font-size: var(--fs-2);
+  line-height: 1.05;
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
 }
 
 ul {
@@ -84,7 +104,7 @@ select {
    Base Typography + Page Base
 ========================= */
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--fs-0);
   line-height: var(--lh-body);
   background: radial-gradient(
