@@ -18,9 +18,8 @@
   top: var(--space-4);
 }
 
-/* Optional scroll indicator (simple) */
 .scroll-indicator {
   display: inline-block;
-  margin-top: var(--space-6);
+  margin-top: var(--space-7);
   color: var(--color-muted);
 }

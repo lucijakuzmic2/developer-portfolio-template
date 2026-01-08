@@ -17,16 +17,43 @@ header .container {
 }
 
 /* Hero layout */
+/* Hero layout: big left headline + right intro */
 .hero {
-  padding-block: var(--space-8);
+  padding-block: clamp(var(--space-7), 8vw, 7rem);
 }
 
-.hero-content {
-  width: min(var(--max-width), 100%);
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: end;
+  gap: clamp(var(--space-6), 6vw, var(--space-8));
+  min-height: min(78vh, 720px);
+}
+
+.hero-left h1 {
+  margin: 0;
+}
+
+/* Right column spacing */
+.hero-right {
+  justify-self: end;
+  max-width: 42ch;
 }
 
 .hero-subheading {
-  font-size: var(--fs-1);
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-5);
+  margin: 0 0 var(--space-5);
+}
+
+/* Mobile: stack */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+    min-height: auto;
+  }
+
+  .hero-right {
+    justify-self: start;
+    max-width: 65ch;
+  }
 }
