@@ -47,7 +47,8 @@
   min-height: min(86vh, 820px);
 }
 .hero-left {
-  align-self: center; /* puts the name in the middle-left zone */
+  align-self: start;
+  margin-top: 2rem;
 }
 
 .hero-right {
