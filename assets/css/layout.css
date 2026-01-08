@@ -8,52 +8,92 @@
 }
 
 /* Header layout */
-header .container {
-  padding-block: var(--space-5);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-5);
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(245, 242, 238, 0.12);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: var(--space-6);
+
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.site-brand {
+  justify-self: start;
+}
+
+.site-meta {
+  justify-self: end;
 }
 
 /* Hero layout */
 /* Hero layout: big left headline + right intro */
 .hero {
-  padding-block: clamp(var(--space-7), 8vw, 7rem);
+  padding-top: clamp(6rem, 12vw, 9rem);
+  padding-bottom: clamp(4rem, 10vw, 7rem);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  align-items: end;
-  gap: clamp(var(--space-6), 6vw, var(--space-8));
-  min-height: min(78vh, 720px);
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  min-height: min(86vh, 820px);
+}
+.hero-left {
+  align-self: center; /* puts the name in the middle-left zone */
 }
 
-.hero-left h1 {
-  margin: 0;
-}
-
-/* Right column spacing */
 .hero-right {
+  align-self: end; /* puts the intro down near the bottom-right */
   justify-self: end;
-  max-width: 42ch;
+  max-width: 40ch;
 }
-
 .hero-subheading {
   margin: 0 0 var(--space-5);
+}
+.hero-contact {
+  margin-top: var(--space-6);
+  font-size: 0.95rem;
 }
 
 /* Mobile: stack */
 @media (max-width: 900px) {
+  .site-header {
+    position: static;
+  }
+
+  .hero {
+    padding-top: var(--space-6);
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
-    align-items: start;
     min-height: auto;
   }
 
+  .hero-left,
   .hero-right {
+    align-self: start;
     justify-self: start;
     max-width: 65ch;
+  }
+
+  /* ✅ These were wrongly outside */
+  .header-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .site-nav,
+  .site-meta {
+    text-align: left;
   }
 }

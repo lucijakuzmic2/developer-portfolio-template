@@ -21,17 +21,25 @@
     <!-- Skip to content link (accessibility) -->
     <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <header>
-      <div class="container">
-        <h1>Portfolio</h1>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="site-brand hero-like" href="index.html" aria-label="Homepage"
+          >LK</a
+        >
 
-        <nav aria-label="Primary navigation">
-          <ul>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <p class="nav-label">Quick Links</p>
+          <ul class="nav-list">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
+        <!-- Location / role (top-right) -->
+        <div class="site-meta">
+          <p class="site-location">Based in Zagreb, CRO</p>
+          <p class="site-role">Graphic Designer</p>
+        </div>
       </div>
     </header>
 
@@ -45,8 +53,11 @@
                 LUCIJA<br />
                 KUZMIC
               </h1>
-            </div>
 
+              <p class="hero-contact">
+                <a href="mailto:lucija@example.com">lucijakuzmic1@gmail.com</a>
+              </p>
+            </div>
             <div class="hero-right">
               <p class="hero-subheading">
                 Hello, I’m a developer specializing in responsive, accessible
@@ -56,10 +67,9 @@
               <a href="#projects" class="btn-primary">View My Work</a>
             </div>
           </div>
-
-          <!-- Optional scroll indicator (decorative) -->
-          <span class="scroll-indicator" aria-hidden="true">↓</span>
         </div>
+        <!-- Optional scroll indicator (decorative) -->
+        <span class="scroll-indicator" aria-hidden="true">↓</span>
       </section>
 
       <!-- About Section -->
