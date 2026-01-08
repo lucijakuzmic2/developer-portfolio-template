@@ -7,7 +7,7 @@
   --color-surface: #22060b;
   --color-text: #f5f2ee; /* warm off-white */
   --color-muted: rgba(245, 242, 238, 0.72);
-  --color-accent: #e10600; /* Ferrari-like red */
+  --color-accent: #910500; /* Ferrari-like red */
   --color-focus: #ffffff;
 
   /* Typography */
@@ -81,7 +81,7 @@ select {
 }
 
 /* =========================
-   Base Typography + Layout
+   Base Typography + Page Base
 ========================= */
 body {
   font-family: var(--font-sans);
@@ -121,69 +121,6 @@ h2 {
   line-height: var(--lh-tight);
   margin-top: var(--space-8);
   margin-bottom: var(--space-3);
-}
-
-/* Simple container utility */
-.container {
-  width: min(var(--max-width), calc(100% - (var(--space-6) * 2)));
-  margin-inline: auto;
-}
-
-/* Basic header/nav spacing */
-header .container {
-  padding-block: var(--space-5);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-5);
-}
-
-/* Hero basics (you can refine later) */
-.hero {
-  padding-block: var(--space-8);
-}
-
-.hero-content {
-  width: min(var(--max-width), 100%);
-}
-
-.hero-subheading {
-  font-size: var(--fs-1);
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-5);
-}
-
-/* CTA button */
-.btn-primary {
-  display: inline-block;
-  background: var(--color-accent);
-  color: var(--color-text);
-  padding: 0.85rem 1.1rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* Accessible focus */
-:focus-visible {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 3px;
-}
-
-/* Skip link (visible on focus) */
-.skip-link {
-  position: absolute;
-  top: -48px;
-  left: var(--space-4);
-  background: var(--color-text);
-  color: #000;
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius);
-  z-index: 1000;
-}
-
-.skip-link:focus {
-  top: var(--space-4);
 }
 
 /* Reduced motion */

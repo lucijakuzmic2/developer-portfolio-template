@@ -1,0 +1,26 @@
+/* =========================
+   Other / Utilities / Extras
+========================= */
+
+/* Skip link (visible on focus) */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: var(--space-4);
+  background: var(--color-text);
+  color: #000;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* Optional scroll indicator (simple) */
+.scroll-indicator {
+  display: inline-block;
+  margin-top: var(--space-6);
+  color: var(--color-muted);
+}

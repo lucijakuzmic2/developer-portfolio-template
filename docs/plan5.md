@@ -1,38 +1,78 @@
-# Plan 5 — CSS Architecture Foundation
+# Plan 5 — CSS Architecture and Base Styling
 
 ## Goal
 
-Create a CSS foundation for the portfolio template:
-
-- CSS custom properties (colors, spacing, typography)
-- CSS reset/normalize
-- Base typography styles
-- System font stack or web fonts
+Establish a scalable CSS architecture for the portfolio template by separating concerns across multiple CSS files and defining global design foundations.
 
 ## Why
 
-- Consistent design tokens (reusable variables)
-- Predictable baseline across browsers
-- Readable, accessible typography
-- Easier future styling (components, sections)
+- Enforces a clear separation of concerns
+- Improves maintainability and readability
+- Matches industry-standard CSS architecture patterns
+- Supports consistent design and accessibility across the site
 
 ## Scope
 
-Files to create/modify:
+Files to create and configure:
 
-- css/base.css (create)
-- index.html (add stylesheet link + optional font link)
-- 404.html (optional: also link stylesheet for consistent look)
+- css/index.css
+- css/base.css
+- css/layout.css
+- css/components.css
+- css/other.css
 
-## Design Direction
+Files to modify:
 
-- Bold, large typography with generous spacing (inspired by modern portfolio templates)
-- Dark “Ferrari red” background + off-white text
-- Ensure WCAG AA contrast for body text
+- index.html
+- 404.html
+
+## CSS Architecture Overview
+
+### index.css (Entry Point)
+
+- Acts as the main stylesheet
+- Imports all other CSS files in a controlled order
+- Contains no direct styling rules
+
+### base.css (Foundation Layer)
+
+- CSS custom properties (colors, spacing, typography)
+- Global CSS reset / normalize
+- Base typography styles (body, headings, paragraphs)
+- System font stack configuration
+- Global accessibility styles (focus, reduced motion)
+
+### layout.css (Structural Layout)
+
+- Page structure and spacing
+- Containers and max-width constraints
+- Header and hero layout rules
+- Section spacing and alignment
+
+### components.css (Reusable UI Components)
+
+- Buttons and interactive elements
+- Reusable interface components
+- Component-level accessibility styling
+
+### other.css (Utilities and Enhancements)
+
+- Skip-to-content link styles
+- Utility or helper classes
+- Optional decorative or non-critical styles
+
+## Accessibility Considerations
+
+- Use of CSS variables to maintain WCAG-compliant contrast
+- Visible focus indicators for keyboard navigation
+- `prefers-reduced-motion` media query support
+- Typography and spacing designed for readability
 
 ## Acceptance Criteria
 
-- Variables defined in :root (colors, spacing scale, font sizes)
-- Reset applied (box-sizing, margins, media elements, form inheritance)
-- Base typography set (font-family, line-height, heading sizes via clamp)
-- Page renders consistently and is readable on mobile/desktop
+- CSS is split logically across the required files
+- index.css imports all CSS modules correctly
+- Base typography and design tokens are defined in base.css
+- Layout and components are separated into appropriate files
+- Styles are applied consistently across index.html and 404.html
+- The site renders correctly and remains accessible
