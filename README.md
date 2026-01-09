@@ -1,6 +1,6 @@
 # Portfolio Template
 
-🔗 **Live Deployment:** _TODO: Add link (e.g., GitHub Pages / Netlify)_
+🔗 **Live Deployment:** https://lucijakuzmic2.github.io/developer-portfolio-template/
 
 ## Project Description and Purpose
 
