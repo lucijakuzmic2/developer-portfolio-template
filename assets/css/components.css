@@ -127,7 +127,7 @@
 /* =========================
    Projects
 ========================= */
-
+/* lines (you already wanted these) */
 .projects {
   padding-top: clamp(6rem, 12vw, 10rem);
   padding-bottom: clamp(6rem, 12vw, 10rem);
@@ -139,161 +139,130 @@
 }
 
 .projects-head {
-  margin-top: clamp(2.2rem, 5vw, 4rem);
+  margin: 0 0 clamp(2rem, 5vw, 3.5rem);
 }
 
 .projects-title {
-  margin: 0;
-  line-height: 0.86;
-  letter-spacing: -0.06em;
-  font-weight: 700;
-  color: var(--color-text);
+  font-family: var(--font-heading);
   font-size: clamp(4.5rem, 12vw, 12rem);
-}
-/* Shared line style */
-.projects-line {
-  width: 100%;
-  border-bottom: 1px solid rgba(245, 242, 238, 0.14);
-}
-
-/* spacing control */
-.projects-line--top {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  margin: 0;
 }
 
-.projects-line--bottom {
-  margin-top: clamp(1.5rem, 4vw, 3rem);
-}
-
-/* Grid */
+/* --- STAGGERED GRID (REFERENCE-LIKE) --- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(1rem, 2.5vw, 2rem);
-  margin-top: clamp(2rem, 4vw, 3rem);
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
 }
 
-/* Card */
+/* placement = the “layout” */
+.project-1 {
+  grid-column: 1 / span 7;
+  grid-row: 1 / span 2;
+}
+.project-2 {
+  grid-column: 9 / span 4;
+  grid-row: 1 / span 1;
+}
+.project-3 {
+  grid-column: 4 / span 6;
+  grid-row: 3 / span 1;
+}
+.project-4 {
+  grid-column: 1 / span 5;
+  grid-row: 4 / span 1;
+}
+.project-5 {
+  grid-column: 8 / span 5;
+  grid-row: 4 / span 1;
+}
+
+/* cards */
 .project-card {
   position: relative;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(245, 242, 238, 0.12);
-  background: rgba(0, 0, 0, 0.15);
-  min-height: 320px;
 }
 
-/* Image */
-.project-img {
-  width: 100%;
-  height: 100%;
+.project-linkwrap {
   display: block;
-  object-fit: cover;
-  transform: scale(1);
-  transition: transform 450ms ease;
-}
-
-/* Overlay */
-.project-overlay {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  align-content: end;
-  gap: 1rem;
-  padding: 1.2rem;
-
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 30%,
-    rgba(0, 0, 0, 0.55) 75%,
-    rgba(0, 0, 0, 0.72) 100%
-  );
-
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 250ms ease, transform 250ms ease;
-}
-
-.project-kicker {
-  margin: 0 0 0.35rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: rgba(245, 242, 238, 0.78);
-}
-
-.project-name {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 650;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-}
-
-.project-desc {
-  margin: 0.5rem 0 0;
-  font-size: 1rem;
-  line-height: 1.35;
-  color: rgba(245, 242, 238, 0.78);
-  max-width: 52ch;
-}
-
-.project-links {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0.55rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(245, 242, 238, 0.28);
-  background: rgba(0, 0, 0, 0.25);
-
-  font-size: 0.95rem;
-  font-weight: 650;
-  letter-spacing: -0.02em;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
   text-decoration: none;
 }
 
-.project-link:hover {
-  background: rgba(245, 242, 238, 0.08);
+/* main background image */
+.project-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  filter: saturate(0.95) contrast(0.95);
+  transform: scale(1);
+  transition: transform 450ms ease, filter 450ms ease;
 }
 
-/* Hover + keyboard focus */
-.project-card:hover .project-img,
-.project-card:focus-within .project-img {
-  transform: scale(1.03);
+/* smaller “floating” image on top */
+.project-thumb {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: min(58%, 280px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(245, 242, 238, 0.16);
+  transition: transform 450ms ease;
 }
 
-.project-card:hover .project-overlay,
-.project-card:focus-within .project-overlay {
-  opacity: 1;
-  transform: translateY(0);
+/* footer like reference */
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(245, 242, 238, 0.92);
 }
 
-/* Mobile */
-@media (max-width: 700px) {
-  .projects-topbar {
+.project-no {
+  opacity: 0.85;
+}
+
+/* hover */
+.project-linkwrap:hover .project-bg {
+  transform: scale(1.02);
+  filter: saturate(1.02) contrast(1.02);
+}
+.project-linkwrap:hover .project-thumb {
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+/* responsive: stack nicely */
+@media (max-width: 900px) {
+  .projects-grid {
     grid-template-columns: 1fr;
-    row-gap: 0.35rem;
-    text-align: left;
+    gap: 2.5rem;
   }
-  .projects-topbar-mid,
-  .projects-topbar-right {
-    justify-self: start;
+  .project-1,
+  .project-2,
+  .project-3,
+  .project-4,
+  .project-5 {
+    grid-column: auto;
+    grid-row: auto;
   }
-
-  .project-card {
-    min-height: 280px;
-  }
-
-  .project-overlay {
-    opacity: 1;
-    transform: none;
+  .project-thumb {
+    width: min(62%, 280px);
+    top: 46%;
   }
 }
