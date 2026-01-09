@@ -110,7 +110,7 @@ a {
   color: inherit;
   text-underline-offset: 0.2em;
 }
-main p:not(.hero-intro):not(.hero-contact) {
+main p:not(.hero-intro):not(.hero-contact):not(.about-bio) {
   font-weight: 400;
   font-size: var(--fs-1);
   line-height: 1.35;
