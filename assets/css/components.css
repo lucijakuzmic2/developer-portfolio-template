@@ -229,20 +229,6 @@
   z-index: 2;
 }
 
-/* footer */
-.project-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-top: 0.9rem;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: rgba(245, 242, 238, 0.92);
-}
-
 .project-no {
   opacity: 0.85;
 }
@@ -310,18 +296,6 @@
 
   border-radius: 18px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-}
-
-/* footer pinned inside card */
-.project-card--ferrari .project-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  padding: 1rem 1.1rem;
-  z-index: 4;
-  margin-top: 0; /* override base margin */
 }
 
 /* =========================
@@ -466,16 +440,6 @@
   border-radius: 18px;
 }
 
-/* footer inside the card (so it doesn’t affect sizing) */
-.project-card--center .project-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem 1.1rem;
-  z-index: 3;
-  margin-top: 0; /* important */
-}
 /* --- CENTER CARD (03): INNER MAGAZINE (A4) --- */
 .project-card--center .project-thumb {
   position: absolute;
@@ -495,4 +459,102 @@
 
   border-radius: 22px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+/* --- Interior card (04) --- */
+.project-card--interior {
+  width: min(560px, 100%); /* size like reference (tweak if needed) */
+  justify-self: start;
+}
+
+.project-card--interior .project-linkwrap {
+  width: 100%;
+  aspect-ratio: 1280 / 896; /* ✅ reference ratio */
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+
+/* background fills the card */
+.project-card--interior .project-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* inner image: make it a wide “window” like your ref */
+.project-card--interior .project-thumb {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: min(70%, 520px);
+  aspect-ratio: 16 / 9; /* wide thumbnail */
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+/* default size for cards that are NOT custom-sized */
+.project-card:not(.project-card--1024):not(.project-card--ferrari):not(
+    .project-card--center
+  )
+  .project-linkwrap {
+  aspect-ratio: 4 / 3;
+}
+
+/* =========================
+   (05) Skincare — HARD LOCK square 1024/1024
+   Paste at END of projects.css
+   ========================= */
+
+.projects .projects-grid article.project-card.project-card--skincare {
+  justify-self: end;
+  width: min(520px, 100%);
+}
+
+.projects
+  .projects-grid
+  article.project-card.project-card--skincare
+  > a.project-linkwrap {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+
+  /* ✅ this is the square */
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+}
+
+/* bg must fill the square */
+.projects
+  .projects-grid
+  article.project-card.project-card--skincare
+  img.project-bg.project-bg--skincare {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+  object-position: 50% 50% !important;
+}
+
+/* optional: keep thumb above bg */
+.projects
+  .projects-grid
+  article.project-card.project-card--skincare
+  img.project-thumb {
+  z-index: 2;
+}
+.project-card--skincare .project-thumb {
+  position: absolute;
+  left: 50%;
+  top: 50%; /* true vertical center */
+  transform: translate(-50%, -50%);
 }
