@@ -357,7 +357,7 @@
 
 .skills-title {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -387,7 +387,7 @@
   border: 1px solid rgba(245, 242, 238, 0.14);
   background: rgba(0, 0, 0, 0.12);
 
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   color: rgba(245, 242, 238, 0.92);
@@ -416,4 +416,30 @@
   .tech-table {
     grid-template-columns: 1fr; /* single column only on very small screens */
   }
+}
+/* =========================
+   Project 01 — hover + overlap fix (bulletproof)
+   ========================= */
+
+/* Make sure project 1 sits above anything overlapping */
+.project-1.project-card--square-lg {
+  position: relative;
+  z-index: 10;
+}
+
+/* Ensure the link/media receives pointer events */
+.project-1.project-card--square-lg .project-link,
+.project-1.project-card--square-lg .project-media {
+  position: relative;
+  pointer-events: auto;
+}
+
+/* Stop BG movement on card 01 */
+.project-1.project-card--square-lg .project-bg {
+  transform: none !important;
+}
+
+/* Force hover from the CARD (works even if link hover is blocked) */
+.project-1.project-card--square-lg:hover .project-thumb {
+  transform: translate(-50%, -50%) scale(1.12) !important;
 }
