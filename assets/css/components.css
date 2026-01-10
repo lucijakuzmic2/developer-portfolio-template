@@ -583,18 +583,19 @@
   gap: clamp(18px, 3vw, 40px);
 
   padding: clamp(18px, 2.5vw, 28px) 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
 .contact-stack__meta p {
   margin: 0 0 12px;
-  font-size: 16px;
   color: var(--fg);
+  font-size: 18px; /* bigger */
+  font-weight: 600; /* bolder */
+  color: #ffffff;
 }
 
 .contact-stack__label {
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
 }
 
 .contact-stack__link {
@@ -619,8 +620,9 @@
 
 .contact-stack__navTitle {
   margin: 0 0 10px;
-  font-size: 13px;
-  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.02em;
   text-transform: lowercase;
 }
@@ -628,9 +630,10 @@
 .contact-stack__navLink {
   display: block;
   margin: 0 0 8px;
-  color: var(--fg);
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
   text-decoration: none;
-  font-size: 16px;
 }
 
 .contact-stack__navLink:hover {
@@ -638,13 +641,40 @@
 }
 
 /* 4) Big name at bottom */
+/* Big name — Inter-tuned, always one line, never overflows */
 .contact-stack__bigName {
-  padding-top: clamp(18px, 3vw, 36px);
-  font-size: clamp(64px, 13vw, 190px);
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-  font-weight: 700;
-  text-transform: lowercase;
+  margin: clamp(56px, 10vw, 120px) auto 0;
+  text-align: center;
+  position: relative;
+}
+
+/* The span is what we size + constrain */
+.contact-stack__bigName > span {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  font-weight: 800;
+  line-height: 0.9;
+
+  /* This is the key: big, but fits most screens */
+  font-size: clamp(72px, 15.2vw, 270px);
+
+  /* Inter looks best slightly tight at large sizes */
+  letter-spacing: -0.048em;
+  word-spacing: 0.02em;
+}
+
+/* Underline divider */
+.contact-stack__bigName::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin: clamp(24px, 4vw, 40px) auto 0;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* Responsive */
@@ -667,4 +697,20 @@
   .contact-stack__row {
     grid-template-columns: 1fr;
   }
+  .contact-stack__bigName > span {
+    font-size: clamp(64px, 12vw, 140px);
+  }
+}
+.contact-stack__meta p,
+.contact-stack__meta span,
+.contact-stack__label {
+  color: #ffffff !important;
+}
+.contact-stack__bigName {
+  margin-left: calc(-1 * clamp(18px, 4vw, 64px));
+  margin-right: calc(-1 * clamp(18px, 4vw, 64px));
+
+  /* minimal optical padding */
+  padding-left: 4px;
+  padding-right: 4px;
 }
