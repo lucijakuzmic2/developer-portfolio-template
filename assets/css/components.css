@@ -153,8 +153,27 @@
 .projects-head {
   margin-top: -2rem; /* ⬅ pulls title upward */
   margin-bottom: clamp(10rem, 10vw, 9rem);
+  position: relative;
+  padding: clamp(24px, 4vw, 48px) 0;
+}
+.projects-head::before,
+.projects-head::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.15); /* softer than pure white */
 }
 
+.projects-head::before {
+  top: 0;
+}
+
+.projects-head::after {
+  bottom: 0;
+}
 .projects-title {
   font-family: var(--font-heading);
   font-size: clamp(4.5rem, 12vw, 12rem);
@@ -480,7 +499,7 @@
   left: 50%;
   width: 100vw;
   height: 1px;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.15); /* softer than pure white */
   transform: translateX(-50%);
 }
 
