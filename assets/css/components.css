@@ -442,30 +442,41 @@
 .project-2.project-card--ferrari {
   margin-top: -6rem; /* adjust value until it matches your reference */
 }
+/* =========================================================
+   CONTACT STACK (clean)
+   - Big "get in / touch" title
+   - White form (left aligned, borderless inputs)
+   - Dark info row + big name
+   ========================================================= */
 
-/* ========== Contact: big headline + light form + dark info + big name ========== */
 .contact-stack {
-  --bg: #000000;
-  --fg: #ffffff;
-  --line: rgb(255, 255, 255);
+  --bg: #000;
+  --fg: #fff;
+  --muted: rgba(255, 255, 255, 0.72);
+  --line: rgba(255, 255, 255, 0.16);
+
+  --form-surface: #fff;
+  --field-surface: #f3f3f3;
+  --field-text: #000;
+  --field-placeholder: rgba(0, 0, 0, 0.45);
 
   background: var(--bg);
   color: var(--fg);
   padding: clamp(44px, 6vw, 96px) clamp(18px, 4vw, 64px);
 }
 
-/* 1) Big "get in touch" header (no image) */
+/* 1) Hero headline */
 .contact-stack__hero {
   padding: clamp(16px, 2.8vw, 34px) 0 clamp(22px, 4vw, 44px);
 }
 
 .contact-stack__headline {
-  font-size: clamp(72px, 14vw, 220px); /* BIGGER */
+  margin: 0;
+  font-size: clamp(72px, 14vw, 220px);
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.85;
-
-  color: #ffffff; /* PURE WHITE */
+  color: #fff;
 
   display: flex;
   justify-content: space-between;
@@ -475,46 +486,50 @@
 
 .contact-stack__headline-left,
 .contact-stack__headline-right {
-  color: #ffffff;
+  white-space: nowrap;
 }
-/* 2) Light form block */
-.contact-stack__formWrap {
-  background: #000000; /* same as page */
-  color: #ffffff;
 
-  padding: clamp(32px, 6vw, 96px) 0; /* vertical spacing only */
-  margin-bottom: clamp(32px, 6vw, 64px);
+/* 2) Form area (full-bleed section spacing, left aligned) */
+.contact-stack__formWrap {
+  padding: clamp(24px, 4vw, 56px) 0;
+  margin-bottom: clamp(28px, 5vw, 64px);
 
   display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(32px, 6vw, 96px);
-  align-items: start;
-  justify-content: start;
-}
-.contact-stack__form {
-  max-width: 640px; /* control width */
-  background: #ffffff;
-  padding: clamp(32px, 5vw, 56px);
-  border-radius: 32px; /* soft, modern */
+  justify-items: end; /* keeps form on the left */
 }
 
-/* inputs like reference */
+/* White form surface */
+.contact-stack__form {
+  width: min(720px, 100%);
+  background: var(--form-surface);
+  border-radius: 32px;
+  padding: clamp(26px, 4vw, 52px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Row for name + email */
+.contact-stack__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* Fields */
 .contact-stack__input,
 .contact-stack__textarea {
-  background: #f5f5f5; /* subtle contrast */
-  color: #000000;
+  width: 100%;
+  background: var(--field-surface);
+  color: var(--field-text);
 
-  border: none; /* REMOVE border */
-  border-radius: 20px;
+  border: none; /* no visible border */
+  border-radius: 22px;
+  padding: 20px 22px;
 
-  padding: 22px 24px;
   font-size: 18px;
   outline: none;
-}
-
-.contact-stack__input + .contact-stack__input,
-.contact-stack__input + .contact-stack__textarea {
-  margin-top: 18px;
 }
 
 .contact-stack__textarea {
@@ -524,32 +539,44 @@
 
 .contact-stack__input::placeholder,
 .contact-stack__textarea::placeholder {
-  color: rgba(0, 0, 0, 0.45);
+  color: var(--field-placeholder);
 }
 
+/* Focus: soft lift without border */
 .contact-stack__input:focus,
 .contact-stack__textarea:focus {
-  background: #eeeeee;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background: #ededed;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
 }
 
-/* big dark button */
+/* Submit button */
 .contact-stack__btn {
-  margin-top: 28px;
+  width: 100%;
+  display: block;
+
+  margin-top: 6px;
+  padding: 18px 22px;
+
+  border: none;
   border-radius: 999px;
-  background: #000000;
-  color: #ffffff;
+
+  background: #000;
+  color: #fff;
+
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .contact-stack__btn:hover {
-  background: #111111;
+  background: #111;
 }
 
 .contact-stack__btn:active {
   transform: translateY(1px);
 }
 
-/* 3) dark info row (like mike bennet) */
+/* 3) Info row */
 .contact-stack__info {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -628,10 +655,6 @@
     gap: 8px;
   }
 
-  .contact-stack__formWrap {
-    grid-template-columns: 1fr;
-  }
-
   .contact-stack__info {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -640,7 +663,8 @@
   .contact-stack__nav {
     justify-content: start;
   }
-}
-.contact-stack__form {
-  max-width: 100%;
+
+  .contact-stack__row {
+    grid-template-columns: 1fr;
+  }
 }
