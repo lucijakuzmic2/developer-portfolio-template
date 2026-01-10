@@ -158,7 +158,7 @@
 .projects-title {
   font-family: var(--font-heading);
   font-size: clamp(4.5rem, 12vw, 12rem);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.9;
   margin: 0;
@@ -466,14 +466,38 @@
 }
 
 /* 1) Hero headline */
+/* Contact hero with TRUE full-bleed dividers */
 .contact-stack__hero {
-  padding: clamp(16px, 2.8vw, 34px) 0 clamp(22px, 4vw, 44px);
+  position: relative;
+  padding: clamp(24px, 4vw, 48px) 0;
+}
+
+/* Full-bleed lines */
+.contact-stack__hero::before,
+.contact-stack__hero::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-50%);
+}
+
+/* Top line */
+.contact-stack__hero::before {
+  top: 0;
+}
+
+/* Bottom line */
+.contact-stack__hero::after {
+  bottom: 0;
 }
 
 .contact-stack__headline {
   margin: 0;
   font-size: clamp(72px, 14vw, 220px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 0.85;
   color: #fff;
@@ -667,16 +691,6 @@
   word-spacing: 0.02em;
 }
 
-/* Underline divider */
-.contact-stack__bigName::after {
-  content: "";
-  display: block;
-  height: 1px;
-  width: 100%;
-  margin: clamp(24px, 4vw, 40px) auto 0;
-  background: rgba(255, 255, 255, 0.25);
-}
-
 /* Responsive */
 @media (max-width: 900px) {
   .contact-stack__headline {
@@ -732,21 +746,18 @@
 
   /* Reference typography */
   font-family: "Inter Display", "Inter", system-ui, sans-serif;
-  font-size: 23px;              /* MATCH reference */
-  font-weight: 700;             /* MATCH reference */
-  letter-spacing: -0.3px;       /* IMPORTANT: negative tracking */
-  line-height: 20px;            /* tight like reference */
+  font-size: 23px; /* MATCH reference */
+  font-weight: 700; /* MATCH reference */
+  letter-spacing: -0.3px; /* IMPORTANT: negative tracking */
+  line-height: 20px; /* tight like reference */
   text-transform: uppercase;
 
   color: #ffffff;
   text-decoration: none;
   border: 2px solid #ffffff;
 
-  transition: background 0.2s ease,
-              color 0.2s ease,
-              transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
-
 
 /* Hover effect */
 .back-to-top-btn:hover {
