@@ -43,12 +43,21 @@
 /* =========================
    Hero Card
 ========================= */
-
 .hero {
-  position: relative;
-
   width: min(1400px, calc(100% - (var(--space-6) * 2)));
   margin: calc(var(--header-h) + var(--space-6)) auto var(--space-6);
+
+  display: grid;
+  justify-items: center;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+
+  background: none;
+}
+
+/* The card is what gets the image */
+.hero-card {
+  position: relative;
+  width: 100%;
 
   border-radius: 28px;
   overflow: hidden;
@@ -67,13 +76,12 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-.hero .hero-container {
-  /* keep content nicely inside the card */
+
+.hero-card .hero-container {
   width: 100%;
   max-width: none;
   margin: 0;
 
-  /* IMPORTANT: don't push everything down too much */
   padding-inline: clamp(1.5rem, 3vw, 3rem);
   padding-top: clamp(1.5rem, 3.5vw, 3rem);
   padding-bottom: clamp(1.5rem, 3.5vw, 3rem);
@@ -122,6 +130,31 @@
   align-self: start;
 }
 
+.hero-scroll {
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+  border: 2px solid rgba(245, 242, 238, 0.35);
+  color: rgba(245, 242, 238, 0.95);
+
+  text-decoration: none;
+  transition: transform 250ms ease, border-color 250ms ease;
+}
+
+.hero-scroll__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.hero-scroll:hover {
+  transform: translateY(4px);
+  border-color: rgba(245, 242, 238, 0.6);
+}
+
 /* =========================
    Mobile
 ========================= */
@@ -140,9 +173,10 @@
   .site-meta {
     text-align: left;
   }
-
   .hero {
     margin: var(--space-6) auto;
+  }
+  .hero-card {
     min-height: auto;
   }
 
@@ -171,7 +205,7 @@
 ========================= */
 
 @media (min-width: 1400px) {
-  .hero {
+  .hero-card {
     background-image: radial-gradient(
         1200px 600px at 10% -10%,
         rgba(225, 6, 0, 0.22),
