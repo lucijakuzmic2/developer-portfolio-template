@@ -195,13 +195,15 @@
 
 .about-title {
   font-family: var(--font-heading);
-  font-size: clamp(3.5rem, 9vw, 8.5rem);
+  font-size: clamp(4.5rem, 12vw, 12rem);
   font-weight: 600;
   letter-spacing: -0.06em;
-  line-height: 0.95;
-  margin: 0 0 1rem;
+  line-height: 0.9;
+  margin: 0;
   grid-column: 1 / 2;
   grid-row: 1;
+  position: relative;
+  padding-bottom: clamp(1.25rem, 2vw, 1.75rem);
 }
 .about-subtitle {
   margin: 0 0 1.25rem;
@@ -250,14 +252,39 @@
   margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
+.about-bioWrap {
+  grid-column: 1 / 2; /* stay in left column */
+  grid-row: 2;
+
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: clamp(1.5rem, 3.5vw, 3rem);
+}
+
 .about-bio {
+  margin: 0;
+
+  width: 42ch; /* more lines */
+  max-width: 42ch;
+
   font-size: clamp(2.2rem, 4.2vw, 4rem);
   font-weight: 500;
   line-height: 1.06;
   letter-spacing: -0.03em;
   color: rgba(245, 242, 238, 0.95);
-  max-width: none;
-  margin: 0;
+}
+.about-head,
+.about-bioWrap {
+  min-width: 0;
+}
+
+.about-bio {
+  min-width: 0;
+  max-width: 42ch;
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 .about-labels-wrapper {
@@ -280,6 +307,33 @@
   column-gap: clamp(1.5rem, 4vw, 4rem);
   row-gap: clamp(1.25rem, 2.5vw, 2rem);
   align-items: start;
+  position: relative;
+}
+.about-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Keep real content above the lines */
+.about-title,
+.about-avatar,
+.about-bio {
+  position: relative;
+  z-index: 1;
+}
+
+/* Your soft line style */
+.about-line {
+  height: 1px;
+  background: rgba(245, 242, 238, 0.18);
+}
+
+/* FULL BLEED line */
+.about-line--full {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .about-head-left {
@@ -323,8 +377,12 @@
     margin-top: 0.75rem;
   }
 
+  .about-bioWrap {
+    justify-content: flex-start;
+  }
+
   .about-bio {
-    grid-column: 1;
+    width: 100%;
   }
 }
 
