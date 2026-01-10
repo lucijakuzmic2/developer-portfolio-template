@@ -443,3 +443,123 @@
 .project-1.project-card--square-lg:hover .project-thumb {
   transform: translate(-50%, -50%) scale(1.12) !important;
 }
+/* =========================================================
+   FOOTER (clean, reference-like)
+   - Center quick links
+   - Bottom-right GitHub repo link
+   ========================================================= */
+
+.site-footer {
+  background: #000;
+  color: #fff;
+
+  padding: clamp(26px, 4vw, 44px) clamp(18px, 4vw, 64px);
+}
+
+.site-footer__inner {
+  position: relative;
+  min-height: 72px; /* gives room for bottom-right link */
+
+  display: grid;
+  place-items: center; /* centers nav */
+}
+
+/* Center nav */
+.site-footer__nav {
+  display: inline-flex;
+  gap: clamp(18px, 3vw, 36px);
+  align-items: center;
+  justify-content: center;
+}
+
+.site-footer__link {
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-body, "Inter Display", system-ui, sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  line-height: 20px;
+  text-transform: lowercase;
+  opacity: 0.95;
+}
+
+.site-footer__link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* Bottom-right repo link */
+.site-footer__repo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-family: var(--font-body, "Inter Display", system-ui, sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  line-height: 20px;
+
+  opacity: 0.9;
+}
+
+.site-footer__repo:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* Keyboard focus */
+.site-footer__link:focus-visible,
+.site-footer__repo:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+/* Mobile: stack and center the repo link */
+@media (max-width: 700px) {
+  .site-footer__inner {
+    min-height: auto;
+    row-gap: 14px;
+    padding-bottom: 6px;
+  }
+
+  .site-footer__repo {
+    position: static;
+    justify-self: center;
+  }
+
+  .site-footer__link {
+    font-size: 16px;
+  }
+}
+/* Bottom-left credits */
+.site-footer__credits {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  margin: 0;
+
+  font-family: var(--font-body, "Inter Display", system-ui, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  line-height: 18px;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+@media (max-width: 700px) {
+  .site-footer__credits {
+    position: static;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+}
