@@ -284,9 +284,122 @@
         </div>
       </section>
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>Contact form or details will go here.</p>
+      <section id="contact" class="contact-stack">
+        <!-- 1) Big headline (no image) -->
+        <header class="contact-stack__hero" aria-label="Get in touch">
+          <h2 class="contact-stack__headline">
+            <span class="contact-stack__headline-left">get in</span>
+            <span class="contact-stack__headline-right">touch</span>
+          </h2>
+        </header>
+
+        <!-- 2) Light form (like reference) -->
+        <div class="contact-stack__formWrap">
+          <button
+            class="contact-stack__copy"
+            type="button"
+            aria-label="Copy email"
+            data-copy="lucijakuzmic1@gmail.com"
+            title="Copy email"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H10V7h9v14z"
+              />
+            </svg>
+          </button>
+
+          <form class="contact-stack__form" action="#" method="post">
+            <input
+              class="contact-stack__input"
+              name="name"
+              type="text"
+              placeholder="Your Name"
+              autocomplete="name"
+              required
+            />
+
+            <input
+              class="contact-stack__input"
+              name="email"
+              type="email"
+              placeholder="Your Email"
+              autocomplete="email"
+              required
+            />
+
+            <textarea
+              class="contact-stack__textarea"
+              name="message"
+              rows="10"
+              placeholder="Your Masterpiece Starts Here"
+              required
+            ></textarea>
+
+            <button class="contact-stack__btn" type="submit">Send It!</button>
+          </form>
+        </div>
+
+        <!-- 3) Rest of contact section (dark like mike bennet ref) -->
+        <div class="contact-stack__info">
+          <div class="contact-stack__meta">
+            <p>
+              <span class="contact-stack__label">email:</span>
+              <a
+                class="contact-stack__link"
+                href="mailto:lucijakuzmic1@gmail.com"
+                >lucijakuzmic1@gmail.com</a
+              >
+            </p>
+            <p>
+              <span class="contact-stack__label">based in:</span> Zagreb,
+              Croatia
+            </p>
+            <p>
+              <span class="contact-stack__label">available for:</span> freelance
+              projects &amp; full-time
+            </p>
+          </div>
+
+          <div class="contact-stack__nav">
+            <div class="contact-stack__navCol">
+              <p class="contact-stack__navTitle">pages</p>
+              <a class="contact-stack__navLink" href="#home">home</a>
+              <a class="contact-stack__navLink" href="#about">about</a>
+              <a class="contact-stack__navLink" href="#work">work</a>
+            </div>
+
+            <div class="contact-stack__navCol">
+              <p class="contact-stack__navTitle">socials</p>
+              <a
+                class="contact-stack__navLink"
+                href="https://www.instagram.com/lucija.kuzmic?igsh=Zjk2eHY1ZGVjbDJz&utm_source=qr"
+                target="_blank"
+                rel="noreferrer"
+                >instagram</a
+              >
+              <a
+                class="contact-stack__navLink"
+                href="https://x.com/"
+                target="_blank"
+                rel="noreferrer"
+                >x(twitter)</a
+              >
+              <a
+                class="contact-stack__navLink"
+                href="https://linkedin.com/"
+                target="_blank"
+                rel="noreferrer"
+                >linkedin</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 4) Big name -->
+        <div class="contact-stack__bigName" aria-label="Your name">
+          lucija kuzmic
+        </div>
       </section>
     </main>
 

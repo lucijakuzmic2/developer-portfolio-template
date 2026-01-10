@@ -250,7 +250,7 @@
 .project-media {
   position: relative;
   overflow: hidden;
-  border-radius: 22px;
+  border-radius: 12px;
   width: 100%;
   background: transparent; /* important: prevents "border" look */
 }
@@ -285,7 +285,7 @@
   object-fit: cover;
   object-position: 50% 50%;
 
-  border-radius: 18px;
+  border-radius: 12px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
   transition: transform 450ms ease;
 }
@@ -332,7 +332,7 @@
 
 .project-card--ferrari .project-media {
   height: 749px; /* reference size */
-  border-radius: 22px;
+  border-radius: 12px;
   overflow: hidden;
   background: transparent;
 }
@@ -348,7 +348,7 @@
   --thumb-w: 82%;
   --thumb-max: 560px;
   --thumb-ar: 16 / 9;
-  border-radius: 18px;
+  border-radius: 12px;
 }
 
 /* =========================
@@ -361,7 +361,7 @@
 
 .project-card--center .project-media {
   aspect-ratio: 900 / 1180;
-  border-radius: 26px;
+  border-radius: 12px;
 }
 
 /* A4 thumb */
@@ -369,7 +369,7 @@
   --thumb-w: 58%;
   --thumb-max: 520px;
   --thumb-ar: 210 / 297;
-  border-radius: 22px;
+  border-radius: 12px;
 }
 
 /* =========================
@@ -438,4 +438,235 @@
 }
 .project-card--ferrari .project-link:hover .project-bg--ferrari {
   transform: none !important;
+}
+.project-2.project-card--ferrari {
+  margin-top: -6rem; /* adjust value until it matches your reference */
+}
+
+/* ========== Contact: big headline + light form + dark info + big name ========== */
+.contact-stack {
+  --bg: #0b0b0b;
+  --fg: #e9e3d9;
+  --muted: rgba(233, 227, 217, 0.7);
+  --line: rgba(233, 227, 217, 0.14);
+
+  background: var(--bg);
+  color: var(--fg);
+  padding: clamp(44px, 6vw, 96px) clamp(18px, 4vw, 64px);
+}
+
+/* 1) Big "get in touch" header (no image) */
+.contact-stack__hero {
+  padding: clamp(16px, 2.8vw, 34px) 0 clamp(22px, 4vw, 44px);
+}
+
+.contact-stack__headline {
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-size: clamp(56px, 10vw, 140px);
+  font-weight: 700;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.contact-stack__headline-left,
+.contact-stack__headline-right {
+  white-space: nowrap;
+}
+
+/* 2) Light form block */
+.contact-stack__formWrap {
+  background: #ffffff;
+  color: #111;
+  border-radius: 20px;
+
+  padding: clamp(18px, 2.8vw, 34px);
+  margin-bottom: clamp(22px, 3.2vw, 40px);
+
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: clamp(18px, 4vw, 56px);
+  align-items: start;
+}
+
+.contact-stack__copy {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.contact-stack__copy svg {
+  fill: rgba(0, 0, 0, 0.75);
+}
+
+.contact-stack__copy:hover {
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+.contact-stack__copy:active {
+  transform: translateY(1px);
+}
+
+/* inputs like reference */
+.contact-stack__input,
+.contact-stack__textarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #f2f2f2;
+  color: #111;
+
+  border-radius: 0;
+  padding: 22px 22px;
+  font-size: 18px;
+  outline: none;
+
+  display: block;
+}
+
+.contact-stack__input + .contact-stack__input,
+.contact-stack__input + .contact-stack__textarea {
+  margin-top: 18px;
+}
+
+.contact-stack__textarea {
+  margin-top: 18px;
+  min-height: 260px;
+  resize: vertical;
+}
+
+.contact-stack__input::placeholder,
+.contact-stack__textarea::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.contact-stack__input:focus,
+.contact-stack__textarea:focus {
+  border-color: rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.04);
+  background: #f4f4f4;
+}
+
+/* big dark button */
+.contact-stack__btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 22px 22px;
+
+  border: none;
+  border-radius: 0;
+  background: #4b4b4b;
+  color: #fff;
+
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-stack__btn:hover {
+  background: #3f3f3f;
+}
+
+.contact-stack__btn:active {
+  transform: translateY(1px);
+}
+
+/* 3) dark info row (like mike bennet) */
+.contact-stack__info {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(18px, 3vw, 40px);
+
+  padding: clamp(18px, 2.5vw, 28px) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-stack__meta p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: var(--fg);
+}
+
+.contact-stack__label {
+  color: var(--muted);
+}
+
+.contact-stack__link {
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.contact-stack__link:hover {
+  border-bottom-color: var(--fg);
+}
+
+.contact-stack__nav {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: clamp(22px, 3vw, 48px);
+  align-content: start;
+  justify-content: end;
+  text-align: left;
+}
+
+.contact-stack__navTitle {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.contact-stack__navLink {
+  display: block;
+  margin: 0 0 8px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.contact-stack__navLink:hover {
+  opacity: 0.85;
+}
+
+/* 4) Big name at bottom */
+.contact-stack__bigName {
+  padding-top: clamp(18px, 3vw, 36px);
+  font-size: clamp(64px, 13vw, 190px);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-stack__headline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .contact-stack__formWrap {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-stack__info {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-stack__nav {
+    justify-content: start;
+  }
 }
