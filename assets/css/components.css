@@ -714,3 +714,52 @@
   padding-left: 4px;
   padding-right: 4px;
 }
+/* Back to top wrapper */
+.contact-stack__backToTop {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(32px, 6vw, 72px);
+}
+
+/* Button styling */
+.back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px 44px;
+  border-radius: 999px;
+
+  /* Reference typography */
+  font-family: "Inter Display", "Inter", system-ui, sans-serif;
+  font-size: 23px;              /* MATCH reference */
+  font-weight: 700;             /* MATCH reference */
+  letter-spacing: -0.3px;       /* IMPORTANT: negative tracking */
+  line-height: 20px;            /* tight like reference */
+  text-transform: uppercase;
+
+  color: #ffffff;
+  text-decoration: none;
+  border: 2px solid #ffffff;
+
+  transition: background 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease;
+}
+
+
+/* Hover effect */
+.back-to-top-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+}
+html {
+  scroll-behavior: smooth;
+}
+@media (max-width: 600px) {
+  .back-to-top-btn {
+    font-size: 13px;
+    padding: 12px 24px;
+  }
+}
