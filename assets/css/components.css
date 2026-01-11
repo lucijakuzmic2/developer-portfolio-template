@@ -18,87 +18,61 @@
 /* =========================
    Header brand + nav (reference style)
 ========================= */
+/* Header: clean, no line */
+.site-header {
+  position: sticky; /* optional */
+  top: 0;
+  z-index: 50;
 
-/* Brand uses "hero-like" typography but scaled down */
-/* Brand */
-.site-brand.hero-like {
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  background: #000; /* match reference */
+  border-bottom: none !important; /* ✅ remove the line */
+}
+
+/* One-row layout like reference */
+.header-inner {
+  width: min(1400px, calc(100% - (var(--space-6) * 2)));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.65fr 1fr auto; /* work | about | CTA */
+  align-items: center;
+
+  padding: 1.25rem 0;
+}
+
+.nav-work {
+  justify-self: end; /* left column */
+}
+
+.nav-about {
+  justify-self: center; /* center column */
+}
+
+/* Right */
+.header-cta {
+  justify-self: end;
+  color: rgba(245, 242, 238, 0.95);
   text-decoration: none;
-  font-size: 1.85rem;
-  line-height: 1;
-}
-
-.brand-mark {
-  font-size: 0.75em;
-  vertical-align: super;
-  margin-left: 0.1em;
-  opacity: 0.95;
-}
-/* Nav block */
-.site-nav {
-  text-align: left;
-  justify-self: center;
-  transform: translateX(1.5rem);
-}
-
-/* Label */
-.nav-label {
-  font-size: var(--fs-ui);
   font-weight: 600;
-  line-height: 1.15;
-  margin: 0;
 }
 
-/* Links line */
-.nav-list {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0;
-  margin-top: 0.35em;
-  line-height: 1.15;
+/* Optional hover */
+.site-nav a:hover,
+.header-cta:hover {
+  opacity: 0.75;
 }
-
-.nav-list li:not(:last-child)::after {
-  content: ", ";
-  color: var(--color-muted);
-}
-
-.nav-list a {
-  font-size: var(--fs-ui);
-  font-weight: 400;
-  color: rgba(245, 242, 238, 0.6);
+.header-inner a {
+  color: rgba(245, 242, 238, 0.95);
   text-decoration: none;
-}
-
-.nav-list a:hover {
-  color: var(--color-text);
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
-}
-
-/* Meta (top-right) */
-.site-meta {
-  text-align: right;
-  font-size: var(--fs-ui);
-}
-
-/* behaves like nav-label */
-.site-location {
   font-weight: 600;
-  line-height: 1.15;
-  margin: 0;
+  font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+  letter-spacing: 0.01em;
 }
 
-/* behaves like nav-list line */
-.site-role {
-  font-weight: 400;
-  line-height: 1.15;
-  margin-top: 0.35em; /* ✅ SAME VALUE AS NAV */
-  color: rgba(245, 242, 238, 0.6);
+.header-inner a:hover {
+  opacity: 0.75;
 }
+
 /* =========================
    PROJECTS SECTION (CLEAN)
    ========================= */
