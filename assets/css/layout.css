@@ -65,16 +65,11 @@
   min-height: 78vh;
   max-height: 860px;
 
-  background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.25) 0%,
-      rgba(0, 0, 0, 0.4) 55%,
-      rgba(0, 0, 0, 0.55) 100%
-    ),
-    url("https://ik.imagekit.io/asxvmwzmck/Screenshot%202026-01-08%20194609.png?tr=w-2400,q-85");
+  background-image: url("https://ik.imagekit.io/asxvmwzmck/Screenshot%202026-01-11%20013720.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  display: flex;
 }
 
 .hero-card .hero-container {
@@ -85,12 +80,13 @@
   padding-inline: clamp(1.5rem, 3vw, 3rem);
   padding-top: clamp(1.5rem, 3.5vw, 3rem);
   padding-bottom: clamp(1.5rem, 3.5vw, 3rem);
+  flex: 1; /* NEW */
+  display: flex;
 }
 
 .hero-container,
 .hero-grid {
-  position: relative;
-  z-index: 1;
+  position: static;
 }
 
 .hero-grid {
@@ -100,36 +96,55 @@
   gap: clamp(3rem, 8vw, 6rem);
   height: 100%;
   align-items: start;
+  flex: 1; /* NEW */
+  min-height: 100%;
+  position: relative;
 }
 
 .hero-left {
-  grid-column: 1;
-  grid-row: 1;
   align-self: start;
+  grid-column: 1 / -1; /* NEW: span both columns */
+  grid-row: 1;
 }
 
-/* RIGHT: force paragraph + button to live in the bottom-right */
-.hero-right {
-  grid-column: 2;
-  grid-row: 2;
-  align-self: end; /* sit lower like reference */
-  justify-self: end;
-  width: 100%;
-  max-width: 760px;
-  min-width: 0;
-  padding-left: clamp(1rem, 4vw, 4rem);
+.hero-card .hero-right {
+  position: absolute;
+  right: -3.5rem; /* ⬅️ snaps to right edge */
+  bottom: clamp(1.5rem, 3.5vw, 3rem);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* ⬅️ content hugs right edge */
+  text-align: right;
+
+  gap: 1rem;
+  width: max-content;
+  max-width: 90%;
 }
 
 .hero-intro {
-  margin: 0 0 var(--space-5);
-}
+  margin: 0 0 1.25rem;
 
-.hero-contact {
-  grid-column: 1;
-  grid-row: 2;
-  align-self: start;
-}
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0.015em;
+  line-height: 1.05;
 
+  color: rgb(120, 0, 0);
+}
+.hero-card .hero-intro {
+  margin: 0 !important;
+  white-space: nowrap !important;
+
+  /* remove width forcing */
+  width: auto;
+  max-width: none;
+
+  font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  text-indent: 0;
+}
 .hero-scroll {
   width: 58px;
   height: 58px;
@@ -154,7 +169,47 @@
   transform: translateY(4px);
   border-color: rgba(245, 242, 238, 0.6);
 }
+.hero-title {
+  max-width: 100%;
+  white-space: nowrap; /* optional: keeps it on one line */
+  color: rgb(120, 0, 0);
+  font-weight: 800;
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
 
+  width: fit-content; /* prevents the long stretched pill */
+  padding: 0.7rem 0.8rem;
+  border-radius: 999px;
+  margin-left: 0 !important;
+
+  /* Reference typography */
+  font-family: "Inter Display", "Inter", system-ui, sans-serif;
+  font-size: 27px; /* MATCH reference */
+  font-weight: 1000; /* MATCH reference */
+  letter-spacing: -0.05em; /* IMPORTANT: negative tracking */
+  line-height: 1; /* tight like reference */
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  color: rgb(120, 0, 0);
+  text-decoration: none;
+  border: 3px solid rgb(120, 0, 0);
+
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  padding-left: 1.05rem; /* ✅ tighter left inset than before */
+  padding-right: 1.4rem; /* keep pill balanced */
+  text-indent: 0 !important;
+  align-self: flex-end !important;
+  transform: none !important;
+  width: fit-content !important;
+}
+
+.btn-outline:hover {
+  background: rgba(245, 242, 238, 0.12);
+}
 /* =========================
    Mobile
 ========================= */
@@ -188,15 +243,17 @@
     grid-column: 1;
     grid-row: 1;
   }
-  .hero-contact {
-    grid-column: 1;
-    grid-row: 2;
-  }
   .hero-right {
-    grid-column: 1;
-    grid-row: 3;
-    justify-self: start;
-    padding-left: 0;
+    position: static;
+    max-width: none;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .hero-card .hero-right {
+    position: static;
+    width: auto;
+    max-width: none;
+    margin-top: 1rem;
   }
 }
 
@@ -206,12 +263,7 @@
 
 @media (min-width: 1400px) {
   .hero-card {
-    background-image: radial-gradient(
-        1200px 600px at 10% -10%,
-        rgba(225, 6, 0, 0.22),
-        transparent 60%
-      ),
-      url("https://ik.imagekit.io/asxvmwzmck/Screenshot%202026-01-08%20194609.png?tr=w-3000,q-85,fo-auto");
+    background-image: url("https://ik.imagekit.io/asxvmwzmck/Screenshot%202026-01-11%20013720.jpg");
   }
 }
 /* =========================
