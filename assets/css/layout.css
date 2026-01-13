@@ -272,11 +272,27 @@
 .about {
   padding-top: clamp(5rem, 10vw, 9rem);
   padding-bottom: clamp(5rem, 10vw, 9rem);
+  position: relative;
 }
 
 .about-container {
-  width: min(1400px, calc(100% - (var(--space-6) * 2)));
-  margin-inline: auto;
+  padding: 120px 0 0;
+
+  flex: none;
+
+  width: 100%;
+  max-width: 1480px;
+  height: min-content;
+
+  position: static;
+  overflow: visible;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* single layer grid */
+  gap: 0;
+  align-items: start;
+  position: relative;
+  z-index: 2;
 }
 
 .about-subtitle {
@@ -326,43 +342,20 @@
   margin-top: clamp(2.5rem, 5vw, 4rem);
 }
 
-.about-bioWrap {
-  grid-column: 1 / 2; /* stay in left column */
-  grid-row: 2;
-
-  display: block;
-  justify-content: flex-end;
-
-  margin-top: clamp(1.5rem, 3.5vw, 3rem);
-  margin: 0;
-  width: 100%;
-  max-width: none;
-  justify-self: start;
-}
-.about .about-bioWrap {
-  padding-left: clamp(2rem, 6vw, 6rem);
-  width: 100%;
-  max-width: none;
-}
-
 .about-bio {
   margin: 0;
-
-  max-width: none;
-  width: 100%;
-  line-height: 1.04;
-
-  font-family: var(--font-heading);
-  font-size: clamp(2.6rem, 4.8vw, 5.4rem);
+  font-size: 79px;
   font-weight: 600;
-  letter-spacing: -0.03em;
-  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 78.6px;
+  letter-spacing: -2.1px;
+  justify-content: flex-start;
   position: relative;
-  z-index: 1;
-}
-.about-head,
-.about-bioWrap {
-  min-width: 0;
+  z-index: 2; /* text above video */
+  max-width: 24ch;
+  padding-left: clamp(1.5rem, 3vw, 3.5rem);
+  top: -145px;
 }
 
 .about-labels-wrapper {
@@ -378,117 +371,36 @@
   margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
-.about-head {
-  display: block; /* no grid needed anymore */
-  position: relative;
+.about-video {
+  cursor: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  display: block;
+  object-fit: cover;
+  background-color: rgba(0, 0, 0, 0);
+  object-position: 50% 50%;
 }
-.about-lines {
+.about-media {
+  align-items: flex-start;
+  gap: 50px;
+  flex: none;
+  height: min-content;
+  overflow: hidden;
+  box-sizing: border-box;
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-/* Keep real content above the lines */
+  top: 20%;
+  transform: translateY(-50%);
 
-/* Your soft line style */
-.about-line {
-  height: 1px;
-  background: rgba(245, 242, 238, 0.18);
-}
-
-/* FULL BLEED line */
-.about-line--full {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-}
-
-.about-head-left {
-  max-width: 72ch;
-}
-.about-hero {
-  position: relative;
-  display: grid;
-
-  /* ⬇️ TEXT gets more space, media less */
-  grid-template-columns: minmax(0, 2.2fr) minmax(320px, 0.8fr);
-
-  align-items: center;
-  min-height: clamp(520px, 70vh, 820px);
-}
-.about .about-hero {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-
-  display: grid;
-  grid-template-columns: minmax(0, 2.4fr) minmax(380px, 1fr);
-  align-items: center;
-}
-.about-hero .about-bioWrap {
-  position: relative;
-  z-index: 2; /* above video */
-  width: min(36ch, 92vw) !important;
-  margin: 0;
-}
-.about-hero .about-bio {
-  margin: 0;
-  text-align: center;
-  width: 100% !important;
-  max-width: none !important;
-
-  font-family: var(--font-heading);
-  font-size: clamp(2.6rem, 4.8vw, 5.4rem);
-  font-weight: 600;
-  line-height: 1.08 !important;
-  letter-spacing: -0.03em;
-  color: #fff;
-}
-.about-hero .about-media {
-  position: absolute;
-  right: clamp(0rem, 2vw, 1rem); /* push to the right edge */
-  top: 50%;
-  transform: translateY(-50%); /* vertically centered */
-
+  right: 2rem;
   width: min(560px, 42vw);
   aspect-ratio: 4 / 5;
+  padding: 0;
+  z-index: 1;
   border-radius: 28px;
   overflow: hidden;
-
-  z-index: 1; /* behind text */
-  opacity: 0.95;
 }
-.about-hero .about-video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-/* RIGHT: single media card */
-.about-media {
-  justify-self: end;
-  width: min(520px, 38vw);
-  aspect-ratio: 4 / 5;
-  border-radius: 28px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.06);
-}
-.about-video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
 @media (max-width: 700px) {
-  .about-head {
-    grid-template-columns: 1fr;
-  }
-
-  .about-bioWrap {
-    justify-content: flex-start;
-  }
-
   .about-bio {
     width: 100%;
   }
@@ -496,72 +408,18 @@
 
 /* Mobile: avatar goes under title (or you can hide it) */
 @media (max-width: 900px) {
-  .about-head-left {
-    padding-top: 0;
-  }
-  .about-hero {
-    min-height: auto;
-    grid-template-rows: auto auto;
-    row-gap: 2rem;
-    place-items: start;
-  }
-
   .about-bio {
     max-width: none;
   }
-  .about-hero .about-bio {
-    max-width: none;
-    text-align: left;
-  }
 
-  .about-hero .about-media {
-    position: static;
-    transform: none;
-    width: 100%;
-    max-width: 560px;
-    aspect-ratio: 16 / 10;
-    z-index: 1;
-  }
-
-  .about-media {
+  .about-video {
     width: 100%;
     max-width: 560px;
     justify-self: start;
     aspect-ratio: 16 / 10;
   }
-  .about-hero .about-bioWrap {
-    width: 100%;
-  }
-}
-.about .about-hero .about-bioWrap {
-  margin-left: 0; /* ⬅️ hard left */
-  justify-self: start;
-
-  width: min(68vw, 68rem); /* wider → fewer lines */
-  max-width: none;
 }
 
-/* Make sure the paragraph can actually use that width */
-.about .about-hero .about-bio {
-  text-align: left;
-  width: 100%;
-  max-width: none;
-  line-height: 1.04;
-}
-.about .about-bio {
-  max-width: none;
-  width: 100%;
-  line-height: 1.04;
-}
-.about .about-media {
-  justify-self: end;
-  margin-right: clamp(2rem, 6vw, 6rem);
-  z-index: 0;
-}
-.about .about-bioWrap {
-  position: relative;
-  z-index: 1;
-}
 /* Skills list (reference-like rows) */
 .skills {
   border-top: 1px solid rgba(245, 242, 238, 0.12);
