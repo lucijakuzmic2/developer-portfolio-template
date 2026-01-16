@@ -357,8 +357,12 @@
   max-width: 24ch;
   padding-left: clamp(1.5rem, 3vw, 3.5rem);
   top: -145px;
+  color: rgba(255, 255, 255, 0.25);
 }
-
+.about-bio .word {
+  display: inline-block;
+  will-change: color;
+}
 .about-labels-wrapper {
   position: relative;
   left: 50%;
