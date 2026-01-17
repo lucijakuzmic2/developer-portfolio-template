@@ -1,26 +1,32 @@
 gsap.registerPlugin(ScrollTrigger);
 
-const bio = document.querySelector(".about-bio");
-if (bio) {
-  // Wrap every word in a span.word (keeps spaces)
-  const words = bio.textContent.trim().split(/\s+/);
-  bio.innerHTML = words.map((w) => `<span class="word">${w}</span>`).join(" ");
+const textEl = document.querySelector(".about-bio__text");
+if (!textEl) console.warn("Missing .about-bio__text");
 
-  const wordSpans = bio.querySelectorAll(".word");
+const raw = textEl.textContent.trim();
+textEl.textContent = "";
 
-  // Start muted
-  gsap.set(wordSpans, { color: "rgba(255,255,255,0.22)" });
+// split into words (keeps spaces)
+const words = raw.split(" ");
+words.forEach((w, i) => {
+  const span = document.createElement("span");
+  span.className = "word";
+  span.textContent = w;
+  textEl.appendChild(span);
+  if (i !== words.length - 1) textEl.appendChild(document.createTextNode(" "));
+});
 
-  // Turn white progressively while scrolling through About
-  gsap.to(wordSpans, {
-    color: "#ffffff",
-    ease: "none",
-    stagger: 0.03, // smaller = smoother "sweep"
-    scrollTrigger: {
-      trigger: ".about",
-      start: "top 70%",
-      end: "top 15%",
-      scrub: true,
-    },
-  });
-}
+const wordEls = textEl.querySelectorAll(".word");
+
+// animate words to white as you scroll through the about section
+gsap.to(wordEls, {
+  color: "rgba(255,255,255,1)",
+  ease: "none",
+  stagger: { each: 0.06 },
+  scrollTrigger: {
+    trigger: "#about",
+    start: "top 70%",
+    end: "top 10%",
+    scrub: true,
+  },
+});

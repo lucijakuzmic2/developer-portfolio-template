@@ -195,6 +195,21 @@
                     loop
                     playsinline
                   ></video>
+                  <div class="project-info">
+                    <div class="project-info__text">
+                      <p class="project-info__title">
+                        Cola Zero Adverstisement
+                      </p>
+                      <p class="project-info__meta">
+                        A cinematic 3D product animation created in Cinema 4D as
+                        a class project, focusing on realistic materials,
+                        controlled lighting, and dynamic camera work. This piece
+                        explores high-end product visualization through precise
+                        modeling, shading, and render-driven storytelling
+                        inspired by commercial advertising.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </a>
             </article>
@@ -216,6 +231,23 @@
                     aria-hidden="true"
                     loading="lazy"
                   />
+                  <div class="project-info">
+                    <div class="project-info__text">
+                      <p class="project-info__title">Ferrari Window Display</p>
+                      <p class="project-info__meta">
+                        A high-end 3D window display concept designed and
+                        modeled in Cinema 4D as a class project, inspired by
+                        Ferrari’s heritage of performance-driven elegance. The
+                        composition uses sculptural forms, controlled color
+                        contrast, and gallery-style lighting to translate
+                        automotive design principles—speed, precision, and
+                        motion—into a contemporary retail display. Emphasis was
+                        placed on material realism, spatial composition, and
+                        cinematic lighting to create a premium, exhibition-like
+                        atmosphere rather than a conventional storefront.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </a>
             </article>
@@ -237,6 +269,22 @@
                     aria-hidden="true"
                     loading="lazy"
                   />
+                  <div class="project-info">
+                    <div class="project-info__text">
+                      <p class="project-info__title">
+                        Editorial Magazine Cover
+                      </p>
+                      <p class="project-info__meta">
+                        A fashion editorial cover created in Adobe Photoshop as
+                        a class project, blending contemporary photography with
+                        refined typography to evoke a high-end magazine
+                        aesthetic. The design emphasizes mood, negative space,
+                        and typographic contrast, with careful retouching and
+                        color grading to achieve a polished, runway-inspired
+                        visual narrative suitable for print.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </a>
             </article>
@@ -258,6 +306,22 @@
                     aria-hidden="true"
                     loading="lazy"
                   />
+                  <div class="project-info">
+                    <div class="project-info__text">
+                      <p class="project-info__title">Architectural Diorama</p>
+                      <p class="project-info__meta">
+                        A 3D architectural diorama created in Cinema 4D as a
+                        class project, exploring the relationship between
+                        interior space and nature. The concept centers on a
+                        minimalist café environment defined by organic forms,
+                        natural materials, and soft, diffused lighting, with a
+                        skylight acting as the compositional focal point. The
+                        project emphasizes spatial balance, material subtlety,
+                        and atmosphere to evoke stillness, mindfulness, and a
+                        gallery-like sense of calm
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </a>
             </article>
@@ -279,6 +343,22 @@
                     aria-hidden="true"
                     loading="lazy"
                   />
+                  <div class="project-info">
+                    <div class="project-info__text">
+                      <p class="project-info__title">
+                        REVIA - Skincare Brand Concept
+                      </p>
+                      <p class="project-info__meta">
+                        A conceptual skincare brand developed as a class
+                        project, focused on simplicity, ritual, and
+                        nature-driven renewal. REVIA explores minimalist
+                        branding through restrained typography, a soft, earthy
+                        color palette, and sculptural packaging, translating the
+                        idea of skin restoration into a calm, elevated visual
+                        identity inspired by purity, balance, and modern luxury
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </a>
             </article>
@@ -413,10 +493,147 @@
         </a>
       </div>
     </footer>
+    <!-- GSAP Core -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <!-- GSAP ScrollTrigger -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-    <!-- Your animations -->
-    <script src="assets/js/animations.js"></script>
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+    </script>
+    <script>
+      const aboutText = document.querySelector(".about-bio");
+
+      const words = aboutText.innerText.split(" ");
+      aboutText.innerHTML = words
+        .map((word) => `<span class="word">${word}&nbsp;</span>`)
+        .join("");
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.set(".about-bio .word", {
+        color: "rgba(255,255,255,0.25)",
+      });
+
+      gsap.to(".about-bio .word", {
+        color: "#ffffff",
+        stagger: 0.03,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".about",
+          start: "top 75%",
+          end: "top 15%",
+          scrub: true,
+        },
+      });
+      const title = document.querySelector(".projects-title");
+
+      if (title) {
+        const originalText = title.dataset.text || title.textContent.trim();
+        title.dataset.text = originalText; // store once
+
+        // build track only once
+        if (!title.querySelector(".projects-title-track")) {
+          title.textContent = "";
+
+          const track = document.createElement("span");
+          track.className = "projects-title-track";
+          track.style.display = "inline-flex";
+          track.style.gap = "4rem";
+          track.style.whiteSpace = "nowrap";
+          track.style.willChange = "transform";
+
+          const a = document.createElement("span");
+          a.textContent = originalText;
+
+          const b = document.createElement("span");
+          b.textContent = originalText;
+
+          track.appendChild(a);
+          track.appendChild(b);
+          title.appendChild(track);
+        }
+
+        const track = title.querySelector(".projects-title-track");
+
+        // marquee tween (paused)
+        const marquee = gsap.to(track, {
+          xPercent: -50,
+          duration: 14,
+          ease: "none",
+          repeat: -1,
+          paused: true,
+        });
+
+        // helper to reset and play the intro + marquee
+        const runIntro = () => {
+          marquee.pause(0); // reset loop to start
+          gsap.set(track, { xPercent: 0 }); // hard reset position
+
+          gsap.fromTo(
+            title,
+            { y: 80, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.9,
+              ease: "power3.out",
+              onComplete: () => marquee.play(),
+            }
+          );
+        };
+
+        ScrollTrigger.create({
+          trigger: ".projects",
+          start: "top 75%",
+          end: "bottom top",
+          onEnter: runIntro, // scrolling down into section
+          onEnterBack: runIntro, // scrolling up back into section
+          onLeave: () => marquee.pause(),
+          onLeaveBack: () => marquee.pause(),
+        });
+      }
+      const contactHeadline = document.querySelector(
+        ".contact-stack__headline"
+      );
+
+      if (contactHeadline) {
+        // helper: reset to hidden state
+        const resetHeadline = () => {
+          gsap.set(contactHeadline, { y: 90, opacity: 0 });
+        };
+
+        // helper: play pop animation
+        const playHeadline = () => {
+          gsap.to(contactHeadline, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            overwrite: true,
+          });
+        };
+
+        // start hidden
+        resetHeadline();
+
+        ScrollTrigger.create({
+          trigger: "#contact",
+          start: "top 75%",
+          end: "bottom top",
+          onEnter: () => {
+            resetHeadline();
+            playHeadline();
+          }, // scrolling down into contact
+          onEnterBack: () => {
+            resetHeadline();
+            playHeadline();
+          }, // scrolling up back into contact
+          onLeave: resetHeadline, // leaving downward -> reset
+          onLeaveBack: resetHeadline, // leaving upward -> reset
+        });
+      }
+    </script>
   </body>
 </html>
