@@ -43,7 +43,11 @@
               <div class="hero-right">
                 <p class="hero-intro">graphic design student</p>
 
-                <a href="#projects" class="btn-outline">SEE WORKS</a>
+                <a href="#projects" class="btn-outline">
+                  <span class="btn-text">
+                    <span class="btn-roll"> SEE WORKS</span>
+                  </span></a
+                >
               </div>
             </div>
           </div>
@@ -643,6 +647,47 @@
         dot.style.left = e.clientX + "px";
         dot.style.top = e.clientY + "px";
       });
+    </script>
+    <script>
+      const btnRoll = document.querySelector(".btn-outline .btn-roll");
+      if (btnRoll) {
+        const text = btnRoll.textContent;
+        btnRoll.textContent = "";
+
+        [...text].forEach((ch, i) => {
+          const span = document.createElement("span");
+          span.className = "char";
+          span.style.setProperty("--i", i);
+          span.innerHTML = ch === " " ? "&nbsp;" : ch;
+          btnRoll.appendChild(span);
+        });
+      }
+    </script>
+    <script>
+      const btn = document.querySelector(".btn-outline");
+
+      if (btn) {
+        let resetTimeout;
+
+        btn.addEventListener("mouseenter", () => {
+          clearTimeout(resetTimeout);
+
+          // allow replay
+          btn.classList.remove("is-filled");
+
+          // lock end state after animation finishes
+          resetTimeout = setTimeout(() => {
+            btn.classList.add("is-filled");
+          }, 520); // match .char transition duration
+        });
+
+        btn.addEventListener("mouseleave", () => {
+          // reset back to red after a short pause
+          resetTimeout = setTimeout(() => {
+            btn.classList.remove("is-filled");
+          }, 350);
+        });
+      }
     </script>
   </body>
 </html>

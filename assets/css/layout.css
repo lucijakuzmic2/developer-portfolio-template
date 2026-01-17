@@ -194,9 +194,10 @@
   text-transform: uppercase;
   white-space: nowrap;
 
-  color: rgb(120, 0, 0);
   text-decoration: none;
+  color: rgb(120, 0, 0);
   border: 3px solid rgb(120, 0, 0);
+  background: transparent;
 
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   padding-left: 1.05rem; /* ✅ tighter left inset than before */
@@ -205,11 +206,73 @@
   align-self: flex-end !important;
   transform: none !important;
   width: fit-content !important;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* keeps ::before behind text nicely */
+  transition: color 0.15s ease;
+}
+.btn-outline .btn-text {
+  --shift: 28px; /* tune: 24–30 for your 27px font */
+  display: inline-block;
+  overflow: hidden;
+  height: var(--shift);
+  line-height: var(--shift);
+  position: relative;
+  z-index: 2;
+}
+.btn-outline .btn-roll {
+  display: block;
+
+  /* second copy below */
+  text-shadow: 0 var(--shift) 0 #000;
+}
+
+.btn-outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1;
+}
+.btn-outline:hover::before {
+  transform: scaleY(1);
+}
+.btn-outline .char {
+  display: inline-block;
+  transform: translateY(0);
+  text-shadow: 0 var(--shift) 0 #000;
+  transition: transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .btn-outline:hover {
-  background: rgba(245, 242, 238, 0.12);
+  color: #000;
 }
+.btn-outline .btn-text,
+.btn-outline .btn-roll {
+  position: relative;
+  z-index: 1;
+}
+.btn-outline:hover .char {
+  transform: translateY(calc(var(--shift) * -1));
+  transition-delay: calc(var(--i) * 18ms);
+}
+
+/* persistent state after hover */
+.btn-outline.is-filled {
+  color: #000;
+}
+
+.btn-outline.is-filled::before {
+  transform: scaleY(1);
+}
+
+.btn-outline.is-filled .char {
+  transform: translateY(calc(var(--shift) * -1));
+}
+
 /* =========================
    Mobile
 ========================= */
