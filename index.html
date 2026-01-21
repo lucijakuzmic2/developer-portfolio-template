@@ -467,7 +467,9 @@
           <span>lucija kuzmìc</span>
         </div>
         <div class="contact-stack__backToTop">
-          <a href="#top" class="back-to-top-btn">BACK TO TOP</a>
+          <a href="#top" class="back-to-top-btn">
+            <span class="btn-roll">BACK TO TOP</span>
+          </a>
         </div>
       </section>
     </main>
@@ -688,6 +690,32 @@
           }, 350);
         });
       }
+    </script>
+    <script>
+      function makeRollingText(selector) {
+        const el = document.querySelector(selector);
+        if (!el) return;
+
+        const roll = el.querySelector(".btn-roll");
+        if (!roll) return;
+
+        const text = roll.textContent;
+        roll.textContent = "";
+
+        const chars = [...text];
+        roll.style.setProperty("--chars", chars.length);
+
+        chars.forEach((ch, i) => {
+          const span = document.createElement("span");
+          span.className = "char";
+          span.style.setProperty("--i", i);
+          span.innerHTML = ch === " " ? "&nbsp;" : ch;
+          roll.appendChild(span);
+        });
+      }
+
+      makeRollingText(".btn-outline");
+      makeRollingText(".back-to-top-btn");
     </script>
   </body>
 </html>

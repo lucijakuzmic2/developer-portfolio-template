@@ -245,6 +245,7 @@
   transform: translateY(0);
   text-shadow: 0 var(--shift) 0 #000;
   transition: transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc((var(--chars) - var(--i) - 1) * 18ms);
 }
 
 .btn-outline:hover {
