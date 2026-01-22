@@ -399,34 +399,56 @@
 }
 
 .about-grid {
-  display: grid;
+  display: block;
   grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.6fr);
   gap: clamp(2rem, 6vw, 5rem);
   align-items: start;
   margin-top: clamp(2.5rem, 5vw, 4rem);
   padding-inline: clamp(2rem, 6vw, 6rem);
 }
-
 .about-bio {
-  margin: 0;
+  font-family: "Inter Display", "Inter", system-ui, sans-serif;
   font-size: 79px;
-  font-weight: 600;
-  display: flex;
-  flex-wrap: wrap;
+  font-weight: 500;
   line-height: 78.6px;
   letter-spacing: -2.1px;
-  justify-content: flex-start;
-  position: relative;
-  z-index: 2; /* text above video */
+  margin: 0;
+
   max-width: 24ch;
   padding-left: clamp(1.5rem, 3vw, 3.5rem);
+  position: relative;
+  z-index: 2;
   top: -145px;
-  color: rgba(255, 255, 255, 0.25);
+
+  color: #666;
+
+  /* ✅ make all lines start at the same left edge */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+
+  /* ✅ prevents odd “first line” indent behavior */
+  text-indent: 0;
 }
-.about-bio .word {
-  display: inline-block;
-  will-change: color;
+
+/* ✅ each word becomes a flex item (consistent for every line) */
+.about-bio .w {
+  display: inline-flex;
+  flex-wrap: nowrap;
 }
+
+/* spacing between words (a real flex item too) */
+.about-bio .ws {
+  display: inline-flex;
+}
+
+/* letters */
+.about-bio .c {
+  display: inline;
+  white-space: pre;
+}
+
 .about-labels-wrapper {
   position: relative;
   left: 50%;
@@ -440,35 +462,6 @@
   margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
-.about-video {
-  cursor: auto;
-  width: 100%;
-  height: 100%;
-  border-radius: 28px;
-  display: block;
-  object-fit: cover;
-  background-color: rgba(0, 0, 0, 0);
-  object-position: 50% 50%;
-}
-.about-media {
-  align-items: flex-start;
-  gap: 50px;
-  flex: none;
-  height: min-content;
-  overflow: hidden;
-  box-sizing: border-box;
-  position: absolute;
-  top: 20%;
-  transform: translateY(-50%);
-
-  right: 2rem;
-  width: min(560px, 42vw);
-  aspect-ratio: 4 / 5;
-  padding: 0;
-  z-index: 1;
-  border-radius: 28px;
-  overflow: hidden;
-}
 @media (max-width: 700px) {
   .about-bio {
     width: 100%;
@@ -479,13 +472,6 @@
 @media (max-width: 900px) {
   .about-bio {
     max-width: none;
-  }
-
-  .about-video {
-    width: 100%;
-    max-width: 560px;
-    justify-self: start;
-    aspect-ratio: 16 / 10;
   }
 }
 

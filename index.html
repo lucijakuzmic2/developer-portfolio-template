@@ -84,19 +84,9 @@
           <p class="about-bio">
             I’m Lucija, a graphic design student with 3 years of experience
             crafting visual stories across digital, editorial, and lifestyle
-            spaces.
+            spaces. Currently focusing my studies on graphic, editorial and
+            industrial design.
           </p>
-        </div>
-
-        <div class="about-media">
-          <video
-            class="about-video"
-            src="https://ik.imagekit.io/asxvmwzmck/Video%20Project%203.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
         </div>
 
         <!-- FULL-WIDTH LABEL BAR (BELOW INTRO) -->
@@ -507,31 +497,62 @@
 
     <script>
       gsap.registerPlugin(ScrollTrigger);
-    </script>
-    <script>
-      const aboutText = document.querySelector(".about-bio");
 
-      const words = aboutText.innerText.split(" ");
-      aboutText.innerHTML = words
-        .map((word) => `<span class="word">${word}&nbsp;</span>`)
-        .join("");
+      window.addEventListener("DOMContentLoaded", () => {
+        const about =
+          document.querySelector("#aboutBio") ||
+          document.querySelector(".about-bio");
+        if (!about) return;
 
-      gsap.registerPlugin(ScrollTrigger);
+        // Build spans ONCE (word wrappers + letter spans)
+        if (!about.querySelector(".c")) {
+          const text = about.textContent.trim();
+          const words = text.split(/\s+/);
 
-      gsap.set(".about-bio .word", {
-        color: "rgba(255,255,255,0.25)",
-      });
+          about.innerHTML = words
+            .map((word, i) => {
+              const letters = [...word]
+                .map((ch) => `<span class="c">${ch}</span>`)
+                .join("");
+              const space =
+                i === words.length - 1 ? "" : `<span class="ws">&nbsp;</span>`;
+              return `<span class="w">${letters}</span>${space}`;
+            })
+            .join("");
+        }
 
-      gsap.to(".about-bio .word", {
-        color: "#ffffff",
-        stagger: 0.03,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".about",
-          start: "top 75%",
-          end: "top 15%",
-          scrub: true,
-        },
+        const chars = Array.from(about.querySelectorAll(".c, .ws"));
+
+        // Sort characters by visual X position (true left → right order)
+        const ordered = chars.slice().sort((a, b) => {
+          const dy = a.offsetTop - b.offsetTop;
+          if (Math.abs(dy) < 5) {
+            // same line → sort by x
+            return a.offsetLeft - b.offsetLeft;
+          }
+          // different line → keep vertical order secondary
+          return dy;
+        });
+
+        // Base state (grey)
+        gsap.set(ordered, { color: "#666", opacity: 1 });
+
+        // Progressive LEFT → RIGHT highlight on scroll
+        gsap.to(ordered, {
+          color: "#fff",
+          ease: "none",
+          stagger: {
+            each: 0.004, // tweak: 0.003–0.007
+            from: 0,
+          },
+          overwrite: "auto",
+          scrollTrigger: {
+            trigger: about,
+            start: "top 75%",
+            end: "bottom 25%",
+            scrub: true,
+          },
+        });
       });
       const title = document.querySelector(".projects-title");
 
