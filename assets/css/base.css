@@ -215,19 +215,55 @@ body {
   cursor: none;
 }
 
-.cursor-dot {
+.cursor {
   position: fixed;
-  top: 0;
   left: 0;
+  top: 0;
 
-  width: 16px;
-  height: 16px;
-  border-radius: 999px;
+  width: 17px;
+  height: 17px;
 
-  background: #fff; /* base color */
-  mix-blend-mode: difference; /* makes it invert on white/black */
+  background: #fff; /* always white */
+  border-radius: 50%;
 
   pointer-events: none;
-  z-index: 2147483647;
   transform: translate(-50%, -50%);
+
+  transition: width 200ms ease, height 200ms ease, border-radius 200ms ease,
+    opacity 150ms ease;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 🔑 THIS IS THE MAGIC */
+  mix-blend-mode: difference;
+}
+.cursor-text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: 0.0002em;
+
+  color: #fff; /* also white */
+  opacity: 0;
+
+  transition: opacity 150ms ease;
+
+  mix-blend-mode: difference; /* 🔑 so text also inverts */
+}
+.cursor.is-active {
+  opacity: 1;
+}
+.cursor.is-view {
+  width: 100px;
+  height: 50px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.cursor.is-view .cursor-text {
+  opacity: 1;
 }

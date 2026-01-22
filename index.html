@@ -662,15 +662,42 @@
         });
       }
     </script>
-    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true">
+      <span class="cursor-text">VIEW</span>
+    </div>
     <script>
-      const dot = document.querySelector(".cursor-dot");
+      const cursor = document.querySelector(".cursor");
+      const projects = document.querySelector(".projects");
 
+      // follow mouse always (so it’s ready)
       window.addEventListener("mousemove", (e) => {
-        dot.style.left = e.clientX + "px";
-        dot.style.top = e.clientY + "px";
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
       });
+
+      // only turn cursor on when inside projects + over a card
+      if (projects) {
+        projects.addEventListener("mouseover", (e) => {
+          const card = e.target.closest(".project-card");
+          if (!card) return;
+
+          cursor.classList.add("is-active", "is-view");
+        });
+
+        projects.addEventListener("mouseout", (e) => {
+          // if we're leaving a card entirely
+          const fromCard = e.target.closest(".project-card");
+          const toCard =
+            e.relatedTarget && e.relatedTarget.closest?.(".project-card");
+
+          if (fromCard && !toCard) {
+            cursor.classList.remove("is-view");
+            cursor.classList.remove("is-active");
+          }
+        });
+      }
     </script>
+
     <script>
       const btnRoll = document.querySelector(".btn-outline .btn-roll");
       if (btnRoll) {

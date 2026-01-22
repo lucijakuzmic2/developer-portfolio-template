@@ -841,3 +841,7 @@ html {
     padding: 12px 24px;
   }
 }
+.project-card,
+.project-card * {
+  cursor: none;
+}
